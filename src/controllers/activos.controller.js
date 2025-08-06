@@ -86,6 +86,8 @@ const obtenerDetalleActivoCompleto = async (req, res) => {
 
   try {
     const pool = await poolPromise;
+  if (!pool) throw new Error("Conexión no establecida con la base de datos.");
+
 
     // 1️⃣ Obtener datos del activo
     const activoResult = await pool.request()
